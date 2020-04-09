@@ -1,10 +1,15 @@
-import React from 'react';
+import React, {useState} from 'react';
+
 import NewMessageForm from './components/NewMessageForm';
 
 const App = () => {
+  const [messages, setMessages] = useState([]);
+  const handleSend = newMessage => {
+    setMessages([newMessage, ...messages]);
+  };
   return (
     <div>
-      <NewMessageForm/>
+      <NewMessageForm onSend={handleSend}/>
     </div>
   );
 };
